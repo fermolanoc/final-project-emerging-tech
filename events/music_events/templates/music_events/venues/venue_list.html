@@ -2,4 +2,27 @@
 
 <h2>Venue List</h2>
 
+<div class="list">
+    {% for venue in venues_list %}
+
+    <div id="venue-{{ venue.pk }}" class="row">
+      <p>
+        <a href=""
+          >{{ venue.name }}</a
+        >
+        {{ venue.city }}, {{ venue.state }}
+      </p>
+      <p>
+        See artists presenting at
+        <a href=""
+          >{{ venue.name }}</a
+        >
+      </p>
+    </div>
+
+    {% empty %}
+    <p>No venues found</p>
+    {% endfor %}
+  </div>
+
 {% endblock %}

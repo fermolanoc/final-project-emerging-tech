@@ -16,6 +16,7 @@ class Venue(models.Model):
     city = models.CharField(max_length=200, blank=False)
     state = models.CharField(max_length=2, blank=False)
 
+
     def __str__(self):
         return f'Name: {self.name} Location: {self.city}, {self.state}'
 
