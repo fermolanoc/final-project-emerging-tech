@@ -82,9 +82,20 @@ header a {
 .item-location {
   margin-top: .7rem;
 }
+.item-nationality, .item-genre {
+  color: #555555;
+  margin-top: -8px;
+  margin-bottom: -4px;
+}
+.item-genre {
+  font-weight: bold;
+}
+.item-description {
+  margin-top: 14px;
+}
 .item-description span {
-  margin-top: 1rem;
   color: var(--primary-color-bg);
+  font-weight: bold;
 }
 
 #venue-list-title,

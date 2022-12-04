@@ -23,15 +23,10 @@
     {% for artist in artists %}
 
     <div class="artist row" id="artist_{{ artist.pk }}">
-      <p class="item-name">
-          {{ artist.name }}
-      </p>
-
-      <p>
-        See artist
-        <a href="{% url 'events:artist_detail' artist_pk=artist.pk %}"
-          >details</a
-        >
+      <p class="item-name">{{ artist.name }}</p>
+      <p class="item-nationality">{{ artist.nationality }}</p>
+      <p class="item-genre">Genre: {{ artist.genre }}</p>
+      <p class="item-description">See artist <a href="{% url 'events:artist_detail' artist_pk=artist.pk %}">details</a>
       </p>
     </div>
 

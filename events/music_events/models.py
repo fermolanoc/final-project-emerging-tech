@@ -6,6 +6,8 @@ class Artist(models.Model):
     """ Represents a musician or a band - a music artist """
     name = models.CharField(max_length=200, blank=False)
     description = models.CharField(max_length=400, blank=True)
+    genre = models.CharField(max_length=20, blank=True)
+    nationality = models.CharField(max_length=20, blank=True)
 
     def __str__(self):
         return f'Name: {self.name}'
