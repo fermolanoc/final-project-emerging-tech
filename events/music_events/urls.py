@@ -15,4 +15,5 @@ urlpatterns = [
     path('artists/detail/<int:artist_pk>/', views.artist_detail, name='artist_detail'),
     path('artists/edit/<int:artist_pk>/', views.edit_artist, name='edit_artist'),
     path('artists/delete/<int:artist_pk>/', views.delete_artist, name='delete_artist'),
+    path('artists/venues_played/<int:artist_pk>/', views.venues_for_artist, name='venues_for_artist'),
 ]

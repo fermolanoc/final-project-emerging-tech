@@ -26,7 +26,10 @@
       <p class="item-name">{{ artist.name }}</p>
       <p class="item-nationality">{{ artist.nationality }}</p>
       <p class="item-genre">Genre: {{ artist.genre }}</p>
-      <p class="item-description">See artist <a href="{% url 'events:artist_detail' artist_pk=artist.pk %}">details</a>
+      <p class="item-description">See artist
+          <a href="{% url 'events:artist_detail' artist_pk=artist.pk %}">details</a>
+          or
+          <a href="{% url 'events:venues_for_artist' artist_pk=artist.pk %}">shows</a>
       </p>
     </div>
 

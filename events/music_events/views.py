@@ -87,3 +87,11 @@ def delete_artist(request, artist_pk):
     # messages.info(request, 'Note Deleted')
     return redirect('events:artist_list')
 
+
+def venues_for_artist(request, artist_pk):
+    """ Get all of the venues where this artist has played a show """
+    shows = Show.objects.filter(artist=artist_pk).order_by('-show_date')  # most recent first
+    artist = Artist.objects.get(pk=artist_pk)
+
+    return render(request, 'music_events/venues/venue_list_for_artist.html', {'artist': artist, 'shows': shows})
+

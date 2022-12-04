@@ -1,0 +1,16 @@
+{% extends 'music_events/base.html' %} {% block content %}
+
+<h2 id="venues-for-artist-title">
+  Venues where {{ artist.name }} has played/will play at
+</h2>
+<div class="list">
+  {% for show in shows %}
+
+  <div class="show row" id="show-{{ show.pk }}">
+      <p><span class="item-name">{{ show.venue.name}}</span> on {{ show.show_date }}</p>
+  </div>
+  {% empty %}
+  <p id="no-results">We have no records of venues this artist has played at</p>
+  <p>{% endfor %}</p>
+</div>
+{% endblock %}
