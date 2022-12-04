@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.db.models import Q
 
 from .models import Venue, Show, Artist
 from .forms import VenueSearchForm, ArtistSearchForm, NewArtistForm
@@ -15,7 +16,7 @@ def venue_list(request):
 
     if search_name:
         # search for this venue, display results. Use case-insensitive contains
-        venues_results = Venue.objects.filter(name__icontains=search_name).order_by('name')
+        venues_results = Venue.objects.filter(Q(name__icontains=search_name) | Q(city__icontains=search_name)).order_by('name')
     else:
         venues_results = Venue.objects.all().order_by('name')
 
@@ -49,7 +50,7 @@ def artist_list(request):
     form = ArtistSearchForm()
     search_name = request.GET.get('search_name')
     if search_name:
-        artists_results = Artist.objects.filter(name__icontains=search_name).order_by('name')
+        artists_results = Artist.objects.filter(Q(name__icontains=search_name) | Q(genre__icontains=search_name)).order_by('name')
     else:
         artists_results = Artist.objects.all().order_by('name')
 
