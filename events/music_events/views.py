@@ -58,3 +58,9 @@ def artist_list(request):
                    'form': form,
                    'search_term': search_name})
 
+
+def artist_detail(request, artist_pk):
+    """ Details about one artist """
+    artist = get_object_or_404(Artist, pk=artist_pk)
+    return render(request, 'music_events/artists/artist_detail.html', {'artist': artist})
+

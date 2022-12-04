@@ -30,9 +30,9 @@
       </p>
 
       <p>
-        See venues played, notes, and add your own
-        <a href=""
-          >{{ artist.name }} notes</a
+        See artist
+        <a href="{% url 'events:artist_detail' artist_pk=artist.pk %}"
+          >details</a
         >
       </p>
     </div>
