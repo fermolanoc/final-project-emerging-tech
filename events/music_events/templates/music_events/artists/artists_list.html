@@ -23,10 +23,8 @@
     {% for artist in artists %}
 
     <div class="artist row" id="artist_{{ artist.pk }}">
-      <p>
-        <a href=""
-          >{{ artist.name }}</a
-        >
+      <p class="item-name">
+          {{ artist.name }}
       </p>
 
       <p>
