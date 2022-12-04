@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 
-from .models import Venue, Show
-from .forms import VenueSearchForm
+from .models import Venue, Show, Artist
+from .forms import VenueSearchForm, ArtistSearchForm
 
 
 # Create your views here.
@@ -41,5 +41,20 @@ def venue_detail(request, venue_pk):
     return render(request, 'music_events/venues/venue_detail.html', {'venue': venue})
 
 
-def artists_list(request):
-    return render(request, 'music_events/artists/artists_list.html')
+def artist_list(request):
+    """ Get a list of all artists, ordered by name.
+
+        If request contains a get parameter search_name then
+        only include artists with names containing that text. """
+    form = ArtistSearchForm()
+    search_name = request.GET.get('search_name')
+    if search_name:
+        artists_results = Artist.objects.filter(name__icontains=search_name).order_by('name')
+    else:
+        artists_results = Artist.objects.all().order_by('name')
+
+    return render(request, 'music_events/artists/artists_list.html',
+                  {'artists': artists_results,
+                   'form': form,
+                   'search_term': search_name})
+

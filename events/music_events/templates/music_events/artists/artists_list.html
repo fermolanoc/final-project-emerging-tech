@@ -2,4 +2,46 @@
 
 <h2>Artists List</h2>
 
+<div>
+  <p>Artist Search</p>
+  <form action="{% url 'events:artist_list' %}">
+    {{ form }}
+    <input type="submit" value="Search" class="btn" />
+  </form>
+
+  <div class="filtered-results">
+    {% if search_term %}
+    <h2 id="artist-list-title">
+      Artists matching '{{ search_term }}'
+      <a href="{% url 'events:artist_list' %}" id="clear_search">(clear)</a>
+    </h2>
+    {% else %}
+    <h2 id="artist-list-title">All artists</h2>
+    {% endif %}
+  </div>
+  <div class="list">
+    {% for artist in artists %}
+
+    <div class="artist row" id="artist_{{ artist.pk }}">
+      <p>
+        <a href=""
+          >{{ artist.name }}</a
+        >
+      </p>
+
+      <p>
+        See venues played, notes, and add your own
+        <a href=""
+          >{{ artist.name }} notes</a
+        >
+      </p>
+    </div>
+
+    {% empty %}
+
+    <p>No artists found</p>
+    {% endfor %}
+  </div>
+</div>
+
 {% endblock %}

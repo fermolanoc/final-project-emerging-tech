@@ -11,5 +11,5 @@ urlpatterns = [
     path('venues/artists_at/<int:venue_pk>/', views.artists_at_venue, name='artists_at_venue'),
 
     # Artist related
-    path('artists/list/', views.artists_list, name='artist_list'),
+    path('artists/list/', views.artist_list, name='artist_list'),
 ]
