@@ -13,4 +13,6 @@ urlpatterns = [
     # Artist related
     path('artists/list/', views.artist_list, name='artist_list'),
     path('artists/detail/<int:artist_pk>/', views.artist_detail, name='artist_detail'),
+    path('artists/edit/<int:artist_pk>/', views.edit_artist, name='edit_artist'),
+    path('artists/delete/<int:artist_pk>/', views.delete_artist, name='delete_artist'),
 ]

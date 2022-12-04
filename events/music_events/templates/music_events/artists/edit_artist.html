@@ -1,0 +1,17 @@
+{% extends 'music_events/base.html' %}
+
+{% block content %}
+
+<h2>Edit details for {{ artist.name }}</h2>
+
+<form class="edit-form" method="POST" action="{% url 'events:edit_artist' artist_pk=artist.pk %}">
+  <div>
+    {% csrf_token %}
+    {{ form.as_p }}
+  </div>
+  <div class="edit-form-options">
+    <input class="edit btn" type="submit" value="Update">
+    <button class="cancel btn"><a href="{% url 'events:artist_list' %}">Cancel</a></button>
+  </div>
+</form>
+{% endblock %}

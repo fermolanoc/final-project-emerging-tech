@@ -7,4 +7,12 @@
   <p class="item-genre">{{ artist.genre }}</p>
   <p class="item-description"><span>Info:</span> {{ artist.description }}</p>
 </div>
+<div class="options">
+  <a class="edit" href="{% url 'events:edit_artist' artist_pk=artist.pk %}">Edit</a>
+
+  <form action="{% url 'events:delete_artist' artist.pk %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="delete btn">Delete</button>
+  </form>
+</div>
 {% endblock %}

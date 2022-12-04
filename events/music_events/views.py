@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Venue, Show, Artist
-from .forms import VenueSearchForm, ArtistSearchForm
+from .forms import VenueSearchForm, ArtistSearchForm, NewArtistForm
 
 
 # Create your views here.
@@ -27,7 +27,7 @@ def venue_list(request):
                    'search_term': search_name})
 
 
-def artists_at_venue(request, venue_pk):   # pk = venue_pk
+def artists_at_venue(request, venue_pk):  # pk = venue_pk
     """ Get all artists who have played a show at the venue with pk provided """
 
     shows = Show.objects.filter(venue=venue_pk).order_by('-show_date')
@@ -63,4 +63,27 @@ def artist_detail(request, artist_pk):
     """ Details about one artist """
     artist = get_object_or_404(Artist, pk=artist_pk)
     return render(request, 'music_events/artists/artist_detail.html', {'artist': artist})
+
+
+def edit_artist(request, artist_pk):
+    """Updates note"""
+    artist = get_object_or_404(Artist, pk=artist_pk)
+
+    form = NewArtistForm(request.POST or None, instance=artist)
+    if form.is_valid():
+        form.save()
+        # messages.info(request, 'Artist updated')
+        return redirect('events:artist_list')
+    return render(request, 'music_events/artists/edit_artist.html',
+                  {'artist': artist,
+                   'form': form})
+
+
+def delete_artist(request, artist_pk):
+    """deletes note"""
+    artist = get_object_or_404(Artist, pk=artist_pk)
+
+    artist.delete()
+    # messages.info(request, 'Note Deleted')
+    return redirect('events:artist_list')
 
