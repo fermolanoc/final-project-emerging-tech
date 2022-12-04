@@ -85,8 +85,9 @@ input, textarea {
   background-color: darkslateblue;
   border-radius: 10px;
   border: none;
-  outline: 1px solid darkslateblue;
-  outline-offset: 2px;
+  outline: none;
+  /*outline: 1px solid darkslateblue;*/
+  /*outline-offset: 2px;*/
   cursor: pointer;
 }
 
@@ -94,34 +95,3 @@ input, textarea {
   margin-bottom: 2rem;
 }
 
-
-/* Notes */
-.new-note-form {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-}
-
-.social-links {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  /* justify-content: space-between; */
-  gap: 2rem;
-}
-
-/*.error {*/
-/*  background-color: #b73f08;*/
-/*  border-radius: 5px;*/
-/*  padding: 2px;*/
-/*  margin: 2px;*/
-/*}*/
-
-/*#add-new-show-link, .create-account-link {*/
-/*  font-size: large;*/
-/*  color: violet;*/
-/*}*/
-/*.cancel a {*/
-/*  text-decoration: none;*/
-/*  color: white;*/
-/*}*/
