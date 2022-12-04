@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
-from .models import Venue
+from .models import Venue, Show
 from .forms import VenueSearchForm
 
 
@@ -25,6 +25,20 @@ def venue_list(request):
                   {'venues': venues_results,
                    'form': form,
                    'search_term': search_name})
+
+
+def artists_at_venue(request, venue_pk):   # pk = venue_pk
+    """ Get all artists who have played a show at the venue with pk provided """
+
+    shows = Show.objects.filter(venue=venue_pk).order_by('-show_date')
+    venue = get_object_or_404(Venue, pk=venue_pk)
+
+    return render(request, 'music_events/artists/artist_list_for_venue.html', {'venue': venue, 'shows': shows})
+
+
+def venue_detail(request, venue_pk):
+    venue = get_object_or_404(Venue, pk=venue_pk)
+    return render(request, 'music_events/venues/venue_detail.html', {'venue': venue})
 
 
 def artists_list(request):

@@ -25,14 +25,14 @@
 
         <div id="venue-{{ venue.pk }}" class="row">
           <p class="item-name">
-            <a href=""
+            <a href="{% url 'events:venue_detail' venue_pk=venue.pk %}"
               >{{ venue.name }}</a
             >
           </p>
           <p class="item-location">Location: {{ venue.city }}, {{ venue.state }}</p>
           <p>
             See artists presenting at
-            <a href=""
+            <a href="{% url 'events:artists_at_venue' venue_pk=venue.pk %}"
               >{{ venue.name }}</a
             >
           </p>

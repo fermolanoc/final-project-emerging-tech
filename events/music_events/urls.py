@@ -7,6 +7,8 @@ urlpatterns = [
 
     # Venue-related
     path('venues/list/', views.venue_list, name='venue_list'),
+    path('venues/detail/<int:venue_pk>/', views.venue_detail, name='venue_detail'),
+    path('venues/artists_at/<int:venue_pk>/', views.artists_at_venue, name='artists_at_venue'),
 
     # Artist related
     path('artists/list/', views.artists_list, name='artist_list'),

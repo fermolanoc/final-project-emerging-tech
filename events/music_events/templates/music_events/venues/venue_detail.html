@@ -1,0 +1,13 @@
+{% extends 'music_events/base.html' %} {% block content %}
+
+<h2 id="venue-detail-title">Venue Detail</h2>
+
+<div class="row">
+  <h3 id="venue-name">{{ venue.name }}</h3>
+  <p>
+    <span id="venue-city">{{ venue.city }}</span>
+    <span id="venue-state">{{ venue.state }}</span>
+  </p>
+</div>
+
+{% endblock %}
